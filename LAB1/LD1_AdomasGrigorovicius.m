@@ -8,10 +8,6 @@ title('Dvi funkcijos')
 xlabel("X-ai")
 ylabel('F_1 [-0-] | F_2 [-x-]')
 
-help linspace;
-help size;
-help max;
-
 N = 1;
 V = N+1:0.5:N+4;
 A = [N N+1 N+2; N+3 N+4 N+5; N+6 N+7 N+8];
