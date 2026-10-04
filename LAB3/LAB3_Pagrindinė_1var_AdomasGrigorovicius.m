@@ -37,7 +37,6 @@ figure;
 
 subplot(2, 1, 1);
 bar(P);
-colormap(gray(8));
 axis([0.5 size(P, 1) + 0.5 0 10]);
 title('a)');
 xlabel('l.d.');
