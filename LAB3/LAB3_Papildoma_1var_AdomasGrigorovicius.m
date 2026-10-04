@@ -1,63 +1,45 @@
+
 A = 5; f = 5; sigma = 1.5; U1 = 3; U2 = 2;
 
 t = 0:0.001:1;
-
-s = A*sin(2*pi*f*t);
-n = sigma*randn(size(t));
-s = s + n;
-
-a = s(s > U1);
+s = A*sin(2*pi*f*t) + sigma*randn(size(t));
 
 b = s;
 b(abs(b) < U2) = 0;
 
-c = length(s);
+idx = s > U1;
+ta = t(idx);
+a = s(idx);
 
-d = length(a);
+yl = [min(s) - 1, max(s) + 1];
 
-e_max = max(b);
-e_min = min(b);
-
-disp(a)
-disp(b)
-disp(c)
-disp(d)
-disp(e_max)
-disp(e_min)
-
-idx = find(s > U1);
-t_a = t(idx);
-
-[a_max, i_max] = max(a);
-[a_min, i_min] = min(a);
-
-figure('Name', 'Signalu grafinis atvaizdavimas', 'Position', [100 100 1300 500]);
+figure;
 
 subplot(1, 2, 1);
-plot(t, s, '-', 'LineWidth', 1.25); hold on;
+plot(t, s, '-', 'LineWidth', 1.25);
+hold on;
 plot(t, b, '--', 'LineWidth', 1.25);
-yline(U1, 'r-', 'LineWidth', 1.25);
-yline(U2, 'k-', 'LineWidth', 1.25);
+yline(U1, 'r', 'LineWidth', 1.25);
+yline(U2, 'k:', 'LineWidth', 1.25);
+yline(-U2, 'k:', 'LineWidth', 1.25, 'HandleVisibility', 'off');
 hold off;
 grid on;
+axis([t(1) t(end) yl]);
 title('Pradinis ir filtruotas signalai', 'Color', 'b', 'FontSize', 14);
 xlabel('Laikas t, s');
-ylabel('Itampa U, V');
-legend('Pradinis signalas', 'Filtruotas signalas', 'Riba U_1', 'Riba U_2', 'Location', 'best');
-xlim([0 1]);
-ylim([min(s) - 1, max(s) + 1]);
+ylabel('Įtampa U, V');
+legend('Pradinis signalas', 'Filtruotas signalas', 'Riba U_1', 'Ribos \pmU_2', 'Location', 'southoutside', 'NumColumns', 2);
 
 subplot(1, 2, 2);
-stem(t_a, a, 'b', 'LineWidth', 1.25, 'MarkerSize', 4); hold on;
-plot(t_a(i_max), a_max, 'o', 'MarkerSize', 10, 'MarkerFaceColor', 'g', 'MarkerEdgeColor', 'g');
-plot(t_a(i_min), a_min, 's', 'MarkerSize', 10, 'MarkerFaceColor', 'm', 'MarkerEdgeColor', 'm');
-yline(U1, 'r-', 'LineWidth', 1.25);
+stem(ta, a, 'filled', 'MarkerSize', 3, 'LineWidth', 1.25);
+hold on;
+plot(ta(a == max(a)), a(a == max(a)), 'o', 'Color', 'g', 'MarkerSize', 10, 'LineWidth', 1.5);
+plot(ta(a == min(a)), a(a == min(a)), 'v', 'Color', 'm', 'MarkerSize', 10, 'LineWidth', 1.5);
+yline(U1, 'r', 'LineWidth', 1.25);
 hold off;
 grid on;
-title('Pradinio signalo reiksmes, virsijancios U_1', 'Color', 'b', 'FontSize', 14);
+axis([t(1) t(end) U1 - 0.5, max(a) + 1]);
+title('Pradinio signalo reikšmės, viršijančios U_1', 'Color', 'b', 'FontSize', 14);
 xlabel('Laikas t, s');
-ylabel('Itampa U, V');
-legend('Reiksmes > U_1', 'Maksimali itampa', 'Minimali itampa', 'Riba U_1', 'Location', 'best');
-xlim([0 1]);
-ylim([U1 - 0.5, max(a) + 1]);
-
+ylabel('Įtampa U, V');
+legend('Reikšmės > U_1', 'Maksimali įtampa', 'Minimali įtampa', 'Riba U_1', 'Location', 'southoutside', 'NumColumns', 2);
