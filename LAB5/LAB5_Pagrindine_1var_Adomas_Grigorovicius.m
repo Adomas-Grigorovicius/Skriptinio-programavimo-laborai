@@ -1,4 +1,4 @@
-% Adomas Grigorovičius LD5 EDif-25/1 1var.
+% Adomas Grigorovičius Pagrindinė LD5 EDif-25/1 1var.
 
 % 1 Užduotis
 signalas = struct();
