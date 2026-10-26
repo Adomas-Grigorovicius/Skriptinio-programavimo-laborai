@@ -1,6 +1,3 @@
-% Adomas Grigorovičius Papildoma LD6 EDif-25/1 1var.
-
-
 function varargout = grafsincos(x)
 % GRAFSINCOS Skaiciuoja vektoriaus-eilutes sin ir cos reiksmes.
 %
@@ -42,3 +39,4 @@ else
     end
 end
 end
+% Adomas Grigorovičius Papildoma LD6 EDif-25/1 1var.
