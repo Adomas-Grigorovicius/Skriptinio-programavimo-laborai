@@ -17,3 +17,5 @@ function C = farenh2cels(F)
 
 C = 5*(F - 32)/9;
 end
+
+% Adomas Grigorovičius Pagrindinė/ 1 Užduotis LD6 EDif-25/1 1var.
