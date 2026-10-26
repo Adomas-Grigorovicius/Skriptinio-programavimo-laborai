@@ -1,5 +1,3 @@
-% Adomas Grigorovičius Pagrindinė/ 1 Užduotis LD6 EDif-25/1 1var.
-
 function C = farenh2cels(F)
 % FARENH2CELS Perskaičiuoja temperatūrą iš Farenheito į Celsijaus skalę.
 %
